@@ -76,8 +76,8 @@ export async function loadGame2Page() {
             cards.push(card);
         });
         gameArea.style.display = 'grid';
-        gameArea.style.gridTemplateColumns = 'repeat(4, 1fr)';
-        gameArea.style.gap = '1rem';
+        gameArea.style.gridTemplateColumns = 'repeat(auto-fit, minmax(80px, 1fr))'; // Адаптивна сітка
+        gameArea.style.gap = '0.5rem'; // Зменшуємо відступ для мобільних
         score = 0;
         matchedPairs = 0;
         scoreEl.textContent = score;
