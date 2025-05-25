@@ -553,8 +553,6 @@ body {
 }
 
 .section-image {
-    object-fit: cover;
-    object-position: top left;
     flex: 1;
     max-width: 300px;
     height: auto;
