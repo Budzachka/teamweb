@@ -6,26 +6,18 @@ import { loadGame2Page } from './game-find-pairs.js';
 export async function loadPage(page) {
     const userName = localStorage.getItem('userName');
     showUserGreeting();
-    const mainContent = document.getElementById('main-content');
+
     if ((page === 'game1' || page === 'game2') && !userName) {
-        mainContent.innerHTML = `
-            <div class="container">
-                <div class="auth-warning">
-                    <h2>Доступ до ігор можливий лише після авторизації!</h2>
-                    <p>Будь ласка, введіть своє ім'я на головній сторінці.</p>
-                    <button class="btn btn-primary" id="go-home-btn">На головну</button>
-                </div>
-            </div>
-        `;
-        const goHomeBtn = document.getElementById('go-home-btn');
-        if (goHomeBtn) {
-            goHomeBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                loadPage('home');
-            });
-        }
+        handleUnauthorizedAccess(document.getElementById('main-content'));
         return;
     }
+
+    await loadPageContent(page);
+}
+
+async function loadPageContent(page) {
+    const mainContent = document.getElementById('main-content');
+
     try {
         switch (page) {
             case 'home':
@@ -46,6 +38,26 @@ export async function loadPage(page) {
     } catch (error) {
         mainContent.innerHTML = '<h1>Помилка завантаження сторінки</h1>';
         console.error(error);
+    }
+}
+
+function handleUnauthorizedAccess(mainContent) {
+    mainContent.innerHTML = `
+        <div class="container">
+            <div class="auth-warning">
+                <h2>Доступ до ігор можливий лише після авторизації!</h2>
+                <p>Будь ласка, введіть своє ім'я на головній сторінці.</p>
+                <button class="btn btn-primary" id="go-home-btn">На головну</button>
+            </div>
+        </div>
+    `;
+
+    const goHomeBtn = document.getElementById('go-home-btn');
+    if (goHomeBtn) {
+        goHomeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loadPage('home');
+        });
     }
 }
 

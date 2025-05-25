@@ -1,5 +1,3 @@
-// Головна сторінка, авторизація, навігація
-
 export function checkUserName() {
     const userName = localStorage.getItem('userName');
     if (userName) {
@@ -216,7 +214,7 @@ export async function loadHomePage() {
     `;
     if (!userName) {
         const authBlockEl = document.querySelector('.auth-block');
-        setTimeout(() => authBlockEl.classList.add('visible'), 30); // плавна поява
+        setTimeout(() => authBlockEl.classList.add('visible'), 30);
         const form = document.getElementById('auth-form');
         form.onsubmit = function(e) {
             e.preventDefault();
@@ -230,12 +228,11 @@ export async function loadHomePage() {
                         localStorage.setItem('userName', name);
                         updateGreeting(name);
                         loadPage('home');
-                    }, 400); // час для анімації зникнення
-                }, 600); // час для loader
+                    }, 400);
+                }, 600);
             }
         };
     }
-    // Додаю SPA-навігацію для кнопок CTA та рекомендацій
     const catalogBtn = document.querySelector('.cta-catalog-btn');
     const game1Btn = document.querySelector('.cta-game1-btn');
     const game2Btn = document.querySelector('.cta-game2-btn');
