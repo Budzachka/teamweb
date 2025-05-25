@@ -1,0 +1,24 @@
+/* Стилі для гри 'Піймай фрукт' */
+.catch-fruit-game {
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.catch-fruit-game .game-info {
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.catch-fruit-game h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.catch-fruit-game .btn {
+    display: block;
+    margin: 1.5rem auto 0 auto;
+}
+
+/* ... (сюди перенести відповідні стилі з style.css) ... */ 

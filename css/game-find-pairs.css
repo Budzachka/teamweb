@@ -1,0 +1,99 @@
+/* Стилі для гри 'Знайди подібні' */
+.find-pairs-game {
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pairs-game-area {
+    margin: 2rem 0 1rem 0;
+    min-height: 340px;
+}
+
+.pair-card {
+    width: 100px;
+    height: 120px;
+    perspective: 700px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: none;
+    transition: box-shadow 0.2s;
+}
+
+.pair-card.flipped .card-inner,
+.pair-card.matched .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s cubic-bezier(.4,2,.6,1);
+    transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+}
+
+.card-front {
+    background: linear-gradient(135deg, #b2dfdb 0%, #fffde7 100%);
+    border: 2px solid #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #4CAF50;
+}
+
+.card-back {
+    background: #fff;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-back img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+.pair-card.matched {
+    box-shadow: 0 0 0 3px #43e97b, 0 2px 8px rgba(67,233,123,0.15);
+    cursor: default;
+    opacity: 0.7;
+}
+
+.pair-card:hover:not(.matched):not(.flipped) {
+    box-shadow: 0 4px 16px rgba(56,249,215,0.18);
+}
+
+.find-pairs-game .game-info {
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.find-pairs-game h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.find-pairs-game .btn {
+    display: block;
+    margin: 1.5rem auto 0 auto;
+} 

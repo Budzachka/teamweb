@@ -1,0 +1,250 @@
+/* Стилі для каталогу */
+.categories-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.category-section {
+    background: var(--gradient-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.category-header:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.category-title {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.toggle-category {
+    background: var(--gradient-primary);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.category-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.category-content.expanded {
+    max-height: 2000px;
+}
+
+.catalog-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.category-content.expanded .catalog-container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.catalog-item {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.catalog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.item-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.item-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.item-image:hover {
+    transform: scale(1.05);
+}
+
+.item-header h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.toggle-info {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.item-info {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.item-info.expanded {
+    max-height: 1000px;
+}
+
+.info-section {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: var(--gradient-light);
+    border-radius: 0.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.item-info.expanded .info-section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.info-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.info-section p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Пошук */
+.search-container {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--gradient-light);
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 2rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    border-color: var(--primary-color);
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.search-results-info {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    display: none;
+    text-align: center;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 1rem;
+}
+
+/* Адаптивність для каталогу */
+@media (max-width: 768px) {
+    .category-section {
+        padding: 1rem;
+    }
+
+    .category-title {
+        font-size: 1.5rem;
+    }
+
+    .catalog-container {
+        grid-template-columns: 1fr;
+    }
+
+    .item-image {
+        width: 120px;
+        height: 120px;
+    }
+}
+@media (max-width: 768px) {
+    .search-container {
+        margin: 1rem 0;
+        padding: 0.8rem;
+    }
+
+    .search-input {
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+    }
+} 
