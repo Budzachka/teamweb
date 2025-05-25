@@ -126,4 +126,4 @@ export async function loadGame2Page() {
         };
     }
     startBtn.onclick = createCards;
-} 
+}
