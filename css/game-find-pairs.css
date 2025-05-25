@@ -6,20 +6,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%; /* Додано для адаптивності */
+    width: 100%; 
 }
 
 #pairs-game-area {
     margin: 2rem 0 1rem 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Адаптивна сітка */
-    gap: 1rem; /* Відступи між картками */
-    min-height: auto; /* Прибрано фіксовану висоту */
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); 
+    gap: 1rem; 
+    min-height: auto; 
 }
 
 .pair-card {
-    width: 22%; /* Відносна ширина, адаптується до сітки */
-    padding-top: 26%; /* Співвідношення 120/100 ≈ 1.2 для квадратного вигляду */
+    width: 22%; 
+    padding-top: 26%; 
     perspective: 700px;
     cursor: pointer;
     position: relative;
@@ -74,8 +74,8 @@
     object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    max-width: 100%; /* Дозволяє адаптацію */
-    max-height: 100%; /* Дозволяє адаптацію */
+    max-width: 100%; 
+    max-height: 100%; 
 }
 
 .pair-card.matched {
@@ -104,24 +104,23 @@
     margin: 1.5rem auto 0 auto;
 }
 
-/* Медіа-запити для мобільних пристроїв */
 @media (max-width: 768px) {
     .find-pairs-game {
         max-width: 100%;
-        padding: 0 10px; /* Відступи по боках */
+        padding: 0 10px; 
     }
 
     #pairs-game-area {
-        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Менші картки */
-        gap: 0.5rem; /* Менші відступи */
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); 
+        gap: 0.5rem; 
     }
 
     .pair-card {
-        padding-top: 30%; /* Збільшуємо співвідношення для кращого вигляду */
+        padding-top: 30%; 
     }
 
     .card-back img {
         width: 50px;
-        height: 50px; /* Менші зображення на мобільних */
+        height: 50px; 
     }
 }
