@@ -884,22 +884,27 @@ body {
 
 /* --- Стилі для гри Знайди подібні --- */
 .find-pairs-game {
-    max-width: 520px;
+    max-width: 100%; /* Повна ширина екрана */
     margin: 0 auto;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 15px; /* Додано для відповідності .container */
 }
 
 #pairs-game-area {
     margin: 2rem 0 1rem 0;
-    min-height: 340px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Збільшено мінімальний розмір для кращого розподілу */
+    gap: 1rem;
+    min-height: auto; /* Прибрано фіксовану висоту */
+    width: 100%; /* Забезпечуємо повну ширину */
 }
 
 .pair-card {
-    width: 100px;
-    height: 120px;
+    width: 100%; /* Адаптивна ширина */
+    padding-top: 120%; /* Співвідношення для прямокутної форми */
     perspective: 700px;
     cursor: pointer;
     position: relative;
@@ -932,16 +937,16 @@ body {
 
 .card-front {
     background: linear-gradient(135deg, #b2dfdb 0%, #fffde7 100%);
-    border: 2px solid #4CAF50;
+    border: 2px solid var(--primary-color); /* Використовуємо змінну з :root */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    color: #4CAF50;
+    font-size: 1.5rem; /* Зменшено для кращого вигляду на мобільних */
+    color: var(--primary-color);
 }
 
 .card-back {
-    background: #fff;
+    background: var(--white); /* Використовуємо змінну з :root */
     transform: rotateY(180deg);
     display: flex;
     align-items: center;
@@ -949,11 +954,13 @@ body {
 }
 
 .card-back img {
-    width: 60px;
-    height: 60px;
+    width: 50px; /* Зменшено для кращого масштабування */
+    height: 50px;
     object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .pair-card.matched {
@@ -975,11 +982,43 @@ body {
 .find-pairs-game h1 {
     text-align: center;
     width: 100%;
+    font-size: 1.8rem; /* Адаптація для мобільних */
 }
 
 .find-pairs-game .btn {
     display: block;
     margin: 1.5rem auto 0 auto;
+}
+
+/* Адаптивність для гри */
+@media (max-width: 768px) {
+    #pairs-game-area {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Оптимізовано для малих екранів */
+        gap: 0.5rem;
+    }
+
+    .pair-card {
+        padding-top: 120%; /* Зберігаємо співвідношення */
+    }
+
+    .card-back img {
+        width: 40px; /* Додаткова оптимізація для малих екранів */
+        height: 40px;
+    }
+
+    .find-pairs-game h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #pairs-game-area {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* Ще менший розмір для дуже малих екранів */
+    }
+
+    .card-front {
+        font-size: 1.2rem; /* Додаткова адаптація */
+    }
 }
 
 /* --- Стилі для гри Збирай яблука --- */
