@@ -633,6 +633,13 @@ body {
     }
 }
 
+@media (max-width: 450px) {
+    .pair-card {
+        width: 80px !important;
+        height: 100px !important;
+    }
+}
+
 /* Стилі для каталогу */
 .categories-container {
     display: flex;
