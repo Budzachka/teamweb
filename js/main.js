@@ -49,60 +49,59 @@ export function showUserGreeting() {
 }
 
 export function setupNavigation() {
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const page = e.target.getAttribute('href').substring(1);
-            loadPage(page);
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            e.target.classList.add('active');
-        });
-    });
     const hamburger = document.querySelector('.hamburger');
     const navbarMenu = document.querySelector('.navbar-menu');
+    
     if (hamburger && navbarMenu) {
-        let menuHover = false;
-        let hamburgerHover = false;
-        hamburger.addEventListener('mouseenter', () => {
-            hamburger.classList.add('active');
-            navbarMenu.classList.add('active');
-            hamburgerHover = true;
-        });
-        hamburger.addEventListener('mouseleave', () => {
-            hamburgerHover = false;
-            setTimeout(() => {
-                if (!menuHover && !hamburgerHover) {
-                    hamburger.classList.remove('active');
-                    navbarMenu.classList.remove('active');
-                }
-            }, 100);
-        });
-        navbarMenu.addEventListener('mouseenter', () => {
-            navbarMenu.classList.add('active');
-            hamburger.classList.add('active');
-            menuHover = true;
-        });
-        navbarMenu.addEventListener('mouseleave', () => {
-            menuHover = false;
-            setTimeout(() => {
-                if (!menuHover && !hamburgerHover) {
-                    hamburger.classList.remove('active');
-                    navbarMenu.classList.remove('active');
-                }
-            }, 100);
-        });
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
+        hamburger.addEventListener('click', () => {
             navbarMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
+            document.body.classList.toggle('menu-open', navbarMenu.classList.contains('active'));
+            hamburger.classList.toggle('active', navbarMenu.classList.contains('active'));
         });
+
+        // Закриття меню при кліку поза ним
         document.addEventListener('click', (e) => {
-            if (!navbarMenu.contains(e.target) && !hamburger.contains(e.target)) {
+            if (window.innerWidth < 768 && navbarMenu.classList.contains('active')) {
+                const isMenu = navbarMenu.contains(e.target);
+                const isHamburger = hamburger.contains(e.target);
+                if (!isMenu && !isHamburger) {
+                    navbarMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    hamburger.classList.remove('active');
+                }
+            }
+        });
+
+        // Закриття меню при відведенні миші
+        navbarMenu.addEventListener('mouseleave', () => {
+            if (window.innerWidth < 768 && navbarMenu.classList.contains('active')) {
                 navbarMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
                 hamburger.classList.remove('active');
             }
         });
     }
+
+    // Обробка навігаційних посилань
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = e.target.getAttribute('href');
+            const page = href.substring(1);
+            loadPage(page);
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            e.target.classList.add('active');
+
+            // Закриття меню після кліку на посилання на мобільних пристроях
+            if (window.innerWidth < 768) {
+                navbarMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                hamburger.classList.remove('active');
+            }
+        });
+    });
+
+    // Перевірка авторизації для ігрових посилань
     const userName = localStorage.getItem('userName');
     document.querySelectorAll('.nav-link-game').forEach(link => {
         if (!userName) {
