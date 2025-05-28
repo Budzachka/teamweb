@@ -81,7 +81,7 @@ body {
     color: var(--primary-color);
 }
 
-/* --- Hamburger меню з анімацією та відкриттям по hover на меню або іконку --- */
+/* Гамбургер меню */
 .hamburger {
     display: none;
     background: none;
@@ -94,12 +94,8 @@ body {
     height: 48px;
     border-radius: 50%;
     transition: background 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-.hamburger:hover,
-.hamburger.active {
-    background: #e0f7fa;
-}
+
 .hamburger span {
     display: block;
     width: 32px;
@@ -107,44 +103,52 @@ body {
     background-color: #333;
     margin: 6px auto;
     border-radius: 2px;
-    transition: all 0.3s cubic-bezier(.4,2,.6,1);
-}
-/* Анімація хрестика при hover/active на hamburger або меню */
-.hamburger.active span:nth-child(1),
-.hamburger:hover span:nth-child(1),
-.navbar-menu:hover ~ .hamburger span:nth-child(1),
-.hamburger:focus span:nth-child(1),
-.navbar-menu:focus-within ~ .hamburger span:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
-    background: #4CAF50;
-}
-.hamburger.active span:nth-child(2),
-.hamburger:hover span:nth-child(2),
-.navbar-menu:hover ~ .hamburger span:nth-child(2),
-.hamburger:focus span:nth-child(2),
-.navbar-menu:focus-within ~ .hamburger span:nth-child(2) {
-    opacity: 0;
-}
-.hamburger.active span:nth-child(3),
-.hamburger:hover span:nth-child(3),
-.navbar-menu:hover ~ .hamburger span:nth-child(3),
-.hamburger:focus span:nth-child(3),
-.navbar-menu:focus-within ~ .hamburger span:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
-    background: #4CAF50;
+    transition: all 0.3s ease;
 }
 
-.hamburger::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 100%;
-    width: 120px;
-    height: 40px;
-    /* Зона між hamburger і меню */
-    pointer-events: auto;
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 8px 32px rgba(76,175,80,0.10);
+        border-radius: 0 0 18px 18px;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
 }
 
 /* Головний контент */
@@ -170,61 +174,6 @@ body {
 .footer-info h3 {
     color: var(--primary-color);
     margin-bottom: 0.5rem;
-}
-
-/* Адаптивність */
-@media (max-width: 992px) {
-    .navbar-menu {
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-    .navbar-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--white);
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 8px 32px rgba(76,175,80,0.10);
-        border-radius: 0 0 18px 18px;
-        animation: menu-fade-in 0.3s;
-    }
-    .navbar-menu.active {
-        display: flex !important;
-    }
-    /* Відкриття меню по hover на hamburger або меню */
-    .hamburger:hover + .navbar-menu,
-    .navbar-menu:hover,
-    .navbar-menu:focus-within,
-    .hamburger:after:hover {
-        display: flex;
-    }
-    @keyframes menu-fade-in {
-        0% { opacity: 0; transform: translateY(-10px); }
-        100% { opacity: 1; transform: translateY(0); }
-    }
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .navbar-brand span {
-        font-size: 1.2rem;
-    }
-
-    .logo {
-        height: 30px;
-    }
 }
 
 /* Стилі для головної сторінки */
@@ -1361,4 +1310,67 @@ body {
     50% { transform: scale(0.97); }
     70% { transform: scale(1.05); }
     100% { transform: scale(1); }
+}
+
+/* About Us Section Styles */
+#about {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.about-text {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-text h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #34495e;
+}
+
+.about-text ul {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.about-text ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.about-text ul li:before {
+    content: "•";
+    color: #27ae60;
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        padding: 10px;
+    }
+    
+    .about-text {
+        padding: 20px;
+    }
 }
