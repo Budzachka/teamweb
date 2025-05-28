@@ -112,6 +112,19 @@ export function setupNavigation() {
             link.removeAttribute('title');
         }
     });
+
+    // Додаємо підсвічування "Головна" при кліку на логотип
+    const logo = document.querySelector('.navbar-brand');
+    if (logo) {
+        logo.style.cursor = 'pointer';
+        logo.addEventListener('click', (e) => {
+            e.preventDefault();
+            loadPage('home');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            const homeLink = document.querySelector('.nav-link[href="#home"]');
+            if (homeLink) homeLink.classList.add('active');
+        });
+    }
 }
 
 export async function loadHomePage() {
