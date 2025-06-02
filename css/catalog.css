@@ -248,3 +248,8 @@
         font-size: 1rem;
     }
 } 
+mark {
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+}
