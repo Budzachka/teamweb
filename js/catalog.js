@@ -120,6 +120,17 @@ function setupSearch() {
                     toggleButton.textContent = 'Детальніше';
                 });
             });
+            catalogItems.forEach(item => {
+              const name = item.querySelector('h3');
+              const benefit = item.querySelector('.info-section:nth-child(1) p');
+              const fact = item.querySelector('.info-section:nth-child(2) p');
+              const tip = item.querySelector('.info-section:nth-child(3) p');
+
+              [name, benefit, fact, tip].forEach(el => {
+              if (el) el.innerHTML = el.textContent; // Знімає <mark>
+              });
+            });
+
             return;
         }
 
@@ -160,6 +171,13 @@ function setupSearch() {
                     foundItems++;
                     uniqueNames.add(itemName);
                     item.style.display = 'block';
+
+                     // Підсвічуємо знайдений текст
+                    highlightMatch(item.querySelector('h3'), searchTerm);
+                    highlightMatch(item.querySelector('.info-section:nth-child(1) p'), searchTerm);
+                    highlightMatch(item.querySelector('.info-section:nth-child(2) p'), searchTerm);
+                    highlightMatch(item.querySelector('.info-section:nth-child(3) p'), searchTerm);
+
                     const category = item.closest('.category-section');
                     category.style.display = 'block';
                     const categoryContent = category.querySelector('.category-content');
@@ -169,6 +187,14 @@ function setupSearch() {
                 }
             });
         }
+        function highlightMatch(element, term) {
+          if (!element || !term) return;
+          const text = element.textContent;
+          const regex = new RegExp(`(${term})`, 'gi');
+          const newText = text.replace(regex, '<mark>$1</mark>');
+          element.innerHTML = newText;
+        }
+
 
         categories.forEach(category => {
             const categoryItems = Array.from(category.querySelectorAll('.catalog-item'));
