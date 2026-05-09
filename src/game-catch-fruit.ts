@@ -1,3 +1,5 @@
+import { withBase } from './paths';
+
 const FRUIT_IMAGES: string[] = [
   'images/apple.png',
   'images/banana.png',
@@ -5,9 +7,9 @@ const FRUIT_IMAGES: string[] = [
   'images/strawberry.png',
   'images/lemon.png',
   'images/grapefruit.png',
-];
+].map(withBase);
 
-const WORM_IMAGE = 'images/worm.png';
+const WORM_IMAGE = withBase('images/worm.png');
 const WORM_CHANCE = 0.18;
 
 export async function loadGame1Page(): Promise<void> {
@@ -32,7 +34,7 @@ export async function loadGame1Page(): Promise<void> {
             </div>
             <div class="game-container catch-fruit-game">
                 <div id="game-area">
-                    <img id="basket" src="images/basket.png" alt="Кошик">
+                    <img id="basket" src="${withBase('images/basket.png')}" alt="Кошик">
                 </div>
                 <div class="game-info">
                     <span class="lives-label">Життя: <b>3</b></span>

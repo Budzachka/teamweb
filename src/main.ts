@@ -1,3 +1,5 @@
+import { withBase } from './paths';
+
 export function checkUserName(): void {
   const userName = localStorage.getItem('userName');
   if (userName) {
@@ -158,7 +160,7 @@ export async function loadHomePage(): Promise<void> {
                         <h1>Ласкаво просимо у світ фруктів та овочів!</h1>
                         <p class="hero-text">Раді вітати вас на нашому яскравому інформаційному сайті про фрукти та овочі! Ми віримо, що ці дари природи роблять наше життя яскравішим і смачнішим.</p>
                     </div>
-                    <img src="images/welcome.jpg" alt="Ласкаво просимо" class="hero-image">
+                    <img src="${withBase('images/welcome.jpg')}" alt="Ласкаво просимо" class="hero-image">
                 </div>
             </section>
             <section class="content-section">
@@ -167,7 +169,7 @@ export async function loadHomePage(): Promise<void> {
                         <h2>Чому варто любити овочі та фрукти</h2>
                         <p>Фрукти та овочі – це справжня скарбниця природи. Вони наповнені вітамінами та мінералами, які роблять ваш імунітет сильнішим, а тіло – міцнішим та витривалішим.</p>
                     </div>
-                    <img src="images/catalog.jpg" alt="Фрукти та овочі" class="section-image">
+                    <img src="${withBase('images/catalog.jpg')}" alt="Фрукти та овочі" class="section-image">
                 </div>
             </section>
             <section class="content-section">
@@ -176,7 +178,7 @@ export async function loadHomePage(): Promise<void> {
                         <h2>Користь для здоров'я: вітаміни, мінерали і клітковина</h2>
                         <p>Коли ми їмо фрукти та овочі, ми отримуємо безліч корисних речовин. Наприклад, апельсини багаті на вітамін C, який допомагає не хворіти взимку та дарує шкірі яскравий відтінок.</p>
                     </div>
-                    <img src="images/recommend.jpg" alt="Користь для здоров'я" class="section-image">
+                    <img src="${withBase('images/recommend.jpg')}" alt="Користь для здоров'я" class="section-image">
                 </div>
             </section>
             <section class="content-section">
@@ -185,7 +187,7 @@ export async function loadHomePage(): Promise<void> {
                         <h2>Коли фрукти та овочі можуть бути шкідливими</h2>
                         <p>Хоча фрукти та овочі дуже корисні, іноді потрібно бути обережними. Деякі люди можуть мати на них алергію – наприклад, ягоди чи горіхи можуть викликати почервоніння чи свербіння.</p>
                     </div>
-                    <img src="images/danger.jpg" alt="Обережність" class="section-image">
+                    <img src="${withBase('images/danger.jpg')}" alt="Обережність" class="section-image">
                 </div>
             </section>
             <section class="content-section recommendations-section">
@@ -216,7 +218,7 @@ export async function loadHomePage(): Promise<void> {
                 <div class="cta-content">
                     <h2 class="cta-title">Готові до веселощів?</h2>
                     <p class="cta-text">Переходьте до наших захоплюючих ігор та перевірте свої знання про фрукти та овочі! Збирайте бали, вигравайте призи та дізнавайтеся нове про здорове харчування!</p>
-                    <img src="images/game.jpg" alt="Гра" class="cta-image">
+                    <img src="${withBase('images/game.jpg')}" alt="Гра" class="cta-image">
                     <div class="cta-buttons">
                         <a href="#game1" class="btn btn-secondary cta-game1-btn">Грати в "Піймай фрукт"</a>
                         <a href="#game2" class="btn btn-secondary cta-game2-btn">Грати в "Знайди подібні"</a>
@@ -224,7 +226,7 @@ export async function loadHomePage(): Promise<void> {
                 </div>
             </section>
             <section class="final-section">
-                <img src="images/final.jpg" alt="Фінальне зображення" class="final-image">
+                <img src="${withBase('images/final.jpg')}" alt="Фінальне зображення" class="final-image">
                 <p class="final-text">Дякуємо, що завітали до нас! Сподіваємося, що наш сайт допоможе вам і вашій родині полюбити фрукти та овочі ще більше.</p>
             </section>
         </div>

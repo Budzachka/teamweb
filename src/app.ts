@@ -1,3 +1,4 @@
+import '@public/css/style.css';
 import { checkUserName, showUserGreeting, setupNavigation, loadHomePage } from './main';
 import { loadCatalogPage } from './catalog';
 import { loadGame1Page } from './game-catch-fruit';

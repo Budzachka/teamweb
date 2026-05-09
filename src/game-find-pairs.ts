@@ -1,3 +1,5 @@
+import { withBase } from './paths';
+
 const PAIR_IMAGES: string[] = [
   'images/apple.png',
   'images/banana.png',
@@ -9,7 +11,7 @@ const PAIR_IMAGES: string[] = [
   'images/beetroot.png',
   'images/carrot.jpg',
   'images/lettuce.png',
-];
+].map(withBase);
 
 const NUM_PAIRS = 6;
 

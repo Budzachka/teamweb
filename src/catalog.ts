@@ -1,7 +1,8 @@
 import type { CatalogData } from './types/catalog';
+import { withBase } from './paths';
 
 async function fetchCatalogData(): Promise<CatalogData> {
-  const response = await fetch('data/fruits.json');
+  const response = await fetch(withBase('data/fruits.json'));
   if (!response.ok) {
     throw new Error(`Помилка завантаження даних: ${response.status}`);
   }
@@ -34,7 +35,7 @@ function generateCatalogHTML(data: CatalogData): string {
                     (item) => `
                   <div class="catalog-item" data-item="${item.id}">
                     <div class="item-header">
-                      <img src="${item.image}" alt="${item.name}" class="item-image">
+                      <img src="${withBase(item.image)}" alt="${item.name}" class="item-image">
                       <h3>${item.name}</h3>
                       <button type="button" class="toggle-info">Детальніше</button>
                     </div>
