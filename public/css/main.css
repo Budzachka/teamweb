@@ -1,0 +1,175 @@
+/* Базові стилі, навігація, головна, авторизація */
+/* ... (сюди перенести відповідні стилі з style.css) ... */
+
+/* Базові стилі */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FF9800;
+    --text-color: #333;
+    --light-bg: #f9f9f9;
+    --white: #ffffff;
+    --gradient-primary: linear-gradient(45deg, var(--primary-color), #45a049);
+    --gradient-light: linear-gradient(145deg, #ffffff, #f5f5f5);
+    --accent-color: var(--secondary-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Навігація */
+.navbar {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 15px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.navbar-brand span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+/* --- Hamburger меню з анімацією та відкриттям по hover на меню або іконку --- */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    position: relative;
+    z-index: 1100;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.hamburger:hover,
+.hamburger.active {
+    background: #e0f7fa;
+}
+.hamburger span {
+    display: block;
+    width: 32px;
+    height: 4px;
+    background-color: #333;
+    margin: 6px auto;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4,2,.6,1);
+}
+.hamburger.active span:nth-child(1),
+.hamburger:hover span:nth-child(1),
+.navbar-menu:hover ~ .hamburger span:nth-child(1),
+.hamburger:focus span:nth-child(1),
+.navbar-menu:focus-within ~ .hamburger span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+    background: #4CAF50;
+}
+.hamburger.active span:nth-child(2),
+.hamburger:hover span:nth-child(2),
+.navbar-menu:hover ~ .hamburger span:nth-child(2),
+.hamburger:focus span:nth-child(2),
+.navbar-menu:focus-within ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3),
+.hamburger:hover span:nth-child(3),
+.navbar-menu:hover ~ .hamburger span:nth-child(3),
+.hamburger:focus span:nth-child(3),
+.navbar-menu:focus-within ~ .hamburger span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+    background: #4CAF50;
+}
+
+.hamburger::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    width: 120px;
+    height: 40px;
+    pointer-events: auto;
+}
+
+#main-content {
+    margin-top: 80px;
+    min-height: calc(100vh - 160px);
+    padding: 2rem 0;
+}
+
+.footer {
+    background-color: var(--light-bg);
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Стилі для головної сторінки, секцій, кнопок, user-greeting, авторизації, адаптивність */
+/* ... (сюди перенести відповідні стилі з style.css, як описано вище) ... */ 
